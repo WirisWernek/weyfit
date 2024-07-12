@@ -1,0 +1,55 @@
+<div class="d-flex w-100 align-items-center justify-content-end">
+	<button (click)="addSerie()" class="btn btn-primary d-flex gap-2">
+		<i class="bi bi-plus-circle"></i>
+		<span>Adicionar</span>
+	</button>
+</div>
+<ng-container>
+	@for (serieForm of series; track serieForm; let indexSerie = $index) {
+	<form class="lesson-form-row cutomized" [formGroup]="serieForm">
+		<h5>Série {{ indexSerie + 1 }}</h5>
+		<div class="mb-3">
+			<label for="inputNome" class="form-label">Nome</label>
+			<input type="text" class="form-control" id="inputNome" placeholder="Rosca Direta" formControlName="nome" />
+		</div>
+		<div class="mb-3">
+			<label for="inputMaquina" class="form-label">Máquina</label>
+			<select class="form-select" id="inputMaquina" formControlName="maquina" name="maquina" required="">
+				<option [ngValue]="''" selected disabled>Selecione uma opção</option>
+				<option value="BICICLETA">Bicicleta</option>
+				<option value="ELIPTICO">Elíptico</option>
+				<option value="ESTEIRA">Esteira</option>
+				<option value="CROSS">Cross</option>
+			</select>
+		</div>
+
+		@for (repeticaoForm of repeticoes(indexSerie); track repeticaoForm; let indexRepeticao = $index) {
+		<hr />
+		<form class="lesson-form-row cutomized" [formGroup]="repeticaoForm">
+			<div class="d-flex w-100 align-items-center justify-content-between">
+				<h5>Repetição {{ indexRepeticao + 1 }}</h5>
+			</div>
+
+			<div class="d-flex w-100 align-items-center justify-content-between">
+				<div class="mb-3 w-50">
+					<label for="inputQuantidadeRepeticoes" class="form-label">Nº de Repetições</label>
+					<input type="number" class="form-control" id="inputQuantidadeRepeticoes" placeholder="5" formControlName="qtdRepeticoes" />
+				</div>
+				<div class="mb-3 w-50">
+					<label for="inputPeso" class="form-label">Peso (Kilos)</label>
+					<div class="d-flex w-100 align-items-end">
+						<input type="number" class="form-control" id="inputPeso" placeholder="peso" formControlName="peso" />
+					</div>
+				</div>
+			</div>
+			<button (click)="deleteRepeticao(indexSerie, indexRepeticao)" class="btn btn-danger w-100 mb-3">Excluir</button>
+		</form>
+		}
+
+		<div class="mb-3 d-flex justify-content-between">
+			<button (click)="addRepeticao(indexSerie)" class="btn btn-primary">Add Repetição</button>
+			<button (click)="deleteSerie(indexSerie)" class="btn btn-danger">Excluir</button>
+		</div>
+	</form>
+	}
+</ng-container>
