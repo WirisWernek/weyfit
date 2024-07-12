@@ -1,0 +1,46 @@
+<main class="d-flex justify-content-center flex-column px-2">
+	<form action="" [formGroup]="form" class="customized">
+		<div class="mb-3">
+			<label for="exampleFormControlInput1" class="form-label required">Nome</label>
+			<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Nome" formControlName="nomeAtividade" />
+		</div>
+		<div class="mb-3">
+			<label for="exampleFormControlInput1" class="form-label">Quando</label>
+			<input type="date" class="form-control" id="exampleFormControlInput1" placeholder="nome" formControlName="dataAtividade" />
+		</div>
+
+		<div ngbAccordion>
+			<div ngbAccordionItem>
+			  <h2 ngbAccordionHeader>
+				<button ngbAccordionButton>Alongamentos</button>
+			  </h2>
+			  <div ngbAccordionCollapse>
+				<div ngbAccordionBody>
+					<app-alongamento [form]="form"></app-alongamento>
+				</div>
+			  </div>
+			</div>
+		  </div>
+		  
+		<!-- <accordion class="mb-3 d-flex flex-column gap-1" [isAnimated]="true">
+			<accordion-group heading="Alongamentos" >
+				<app-alongamento [form]="form"></app-alongamento>
+			</accordion-group>
+			<accordion-group heading="Cardios">
+				<app-cardio [form]="form"></app-cardio>
+			</accordion-group>
+			<accordion-group heading="Séries">
+				<app-serie [form]="form"></app-serie>
+			</accordion-group>
+			<accordion-group heading="Drop Sets">
+				<app-drop-set [form]="form"></app-drop-set>
+			</accordion-group>
+		</accordion> -->
+		<div class="d-flex w-100 align-items-center justify-content-center mb-3 px-2 fixed-bottom">
+			<button (click)="save()" class="btn btn-success w-100 d-flex gap-2 justify-content-center">
+				<i class="bi bi-floppy"></i>
+				<span >Salvar</span>
+			</button>
+		</div>
+	</form>
+</main>
