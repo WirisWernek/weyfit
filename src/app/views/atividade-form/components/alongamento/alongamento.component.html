@@ -1,0 +1,26 @@
+<div class="d-flex w-100 align-items-center justify-content-end">
+	<button (click)="addAlongamento()" class="btn btn-primary d-flex gap-2">
+		<i class="bi bi-plus-circle"></i>
+		<span>Adicionar</span>
+	</button>
+</div>
+<ng-container>
+	@for (alongamentoForm of alongamentos; track alongamentoForm; let i = $index) {
+	<hr /> 
+	<form class="lesson-form-row customized" [formGroup]="alongamentoForm">
+		<h5>Alongamento {{ i + 1 }}</h5>
+		<div class="mb-3">
+			<label for="inputNome" class="form-label">Nome</label>
+			<input type="text" class="form-control" id="inputNome" placeholder="Alongamento Cobra" formControlName="nome" />
+		</div>
+		<div class="mb-3">
+			<label for="inputTempo" class="form-label">Tempo (minutos)</label>
+			<input type="number" class="form-control" id="inputTempo" placeholder="6" formControlName="tempo" />
+		</div>
+		<button (click)="deleteAlongamento(i)" class="btn btn-danger w-100 d-flex gap-2 justify-content-center">
+			<i class="bi bi-trash3"></i>
+			<span>Excluir</span>
+		</button>
+	</form>
+	}
+</ng-container>
