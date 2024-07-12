@@ -1,0 +1,14 @@
+.offcanvas-body{
+	padding: 0px var(--bs-offcanvas-padding-x) !important;
+}
+
+.offcanvas-header{
+	padding-bottom: 10px !important;
+}
+.nav-link:hover{
+    color: var(--bs-nav-pills-link-active-color);
+    background-color: var(--bs-nav-pills-link-active-bg);
+}
+hr{
+	margin: 12px 0;
+}
