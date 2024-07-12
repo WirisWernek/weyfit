@@ -1,0 +1,22 @@
+form.customized {
+	input, select {
+		padding: 8px 10px !important;
+		font-size: 1rem;
+		border-radius: 10px;
+		color: #050505;
+		border: 1px solid #000000a2 !important;
+		// background-color: #ffffff38 !important;
+	}
+
+	label {
+		margin-bottom: 0 !important;
+		font-size: 1.1rem;
+		font-weight: 200;
+		&.required {
+			&::after {
+				content: ' *';
+				color: #ff0000;
+			}
+		}
+	}
+}

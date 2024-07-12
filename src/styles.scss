@@ -3,3 +3,79 @@
 /* Importing Bootstrap SCSS file. */
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons.css';
+@import '../public/scss/slide-in.scss';
+@import '../public/scss/input-customized.scss';
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Quicksand', sans-serif;
+	font-optical-sizing: auto;
+	font-style: normal;
+}
+
+html,
+body {
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	background-color: #dadada !important;
+}
+
+app-sidebar {
+	height: 100% !important;
+}
+
+.card-header {
+	background-color: transparent !important;
+	border-bottom: none !important;
+	button {
+		text-decoration: none;
+		color: #000000;
+		font-size: x-large;
+		&:hover {
+			color: #252525;
+		}
+	}
+	&:hover {
+		z-index: 2;
+		border-radius: 10px !important;
+		color: var(--bs-list-group-active-color);
+		background-color: #cfcfcf !important;
+		border-color: var(--bs-list-group-active-border-color);
+	}
+}
+
+.panel {
+	padding: 0 !important;
+	margin: 0 !important;
+	background-color: #ffffff !important;
+	border: none !important;
+	border-radius: 10px !important;
+	
+}
+
+.sidebar-size{
+	width: 80% !important;
+}
+
+@media (min-width: 600px) and (max-width: 949px) {
+	.sidebar-size{
+		width: 40% !important;
+	}
+}
+
+@media (min-width: 950px) {
+	.sidebar-size{
+		width: 30% !important;
+	}
+}
+
+@media (max-width: 350px) {
+	.sidebar-size{
+		width: 90% !important;
+	}
+}
