@@ -10,17 +10,20 @@ import { SerieAtividadeModel } from '../../models/serie.atividade.model';
 import { AlertService } from '../../shared/services/alert.service';
 import { AtividadeService } from '../../shared/services/atividade.service';
 import { AlongamentoComponent } from './components/alongamento/alongamento.component';
+import { CardioComponent } from './components/cardio/cardio.component';
+import { DropSetComponent } from './components/drop-set/drop-set.component';
+import { SerieComponent } from './components/serie/serie.component';
 
 @Component({
 	selector: 'app-atividade-form',
 	standalone: true,
-	imports: [NgbAccordionModule, FormsModule, ReactiveFormsModule, AlongamentoComponent],
+	imports: [NgbAccordionModule, FormsModule, ReactiveFormsModule, AlongamentoComponent, CardioComponent, SerieComponent, DropSetComponent],
 	templateUrl: './atividade-form.component.html',
 	styleUrl: './atividade-form.component.scss',
 })
 export class AtividadeFormComponent implements OnInit {
 	form: FormGroup;
-	docId: string = '';
+	docId = '';
 	constructor(
 		private formBuilder: FormBuilder,
 		private router: Router,

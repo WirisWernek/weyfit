@@ -1,10 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
 	selector: 'app-alongamento',
 	standalone: true,
-	imports: [FormsModule, ReactiveFormsModule],
+	imports: [FormsModule, ReactiveFormsModule, NgbAccordionModule],
 	templateUrl: './alongamento.component.html',
 	styleUrl: './alongamento.component.scss',
 })

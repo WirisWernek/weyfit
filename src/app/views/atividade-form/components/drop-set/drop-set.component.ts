@@ -1,10 +1,11 @@
 import { Component, Input } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
 	selector: 'app-drop-set',
 	standalone: true,
-	imports: [],
+	imports: [FormsModule, ReactiveFormsModule, NgbAccordionModule],
 	templateUrl: './drop-set.component.html',
 	styleUrl: './drop-set.component.scss',
 })

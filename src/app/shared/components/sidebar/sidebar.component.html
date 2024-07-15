@@ -1,6 +1,8 @@
-<div class="offcanvas-header text-bg-dark">
+<div class="offcanvas-header text-bg-dark d-flex justify-content-between">
 	<span class="fs-4">Weyfit</span>
-	<button type="button" class="btn-close text-reset" aria-label="Close" (click)="activeOffcanvas.dismiss('Cross click')"></button>
+	<button type="button" class="btn text-reset" aria-label="Close" (click)="activeOffcanvas.dismiss('Cross click')">
+		<i class="bi bi-arrow-bar-left"></i>
+	</button>
 </div>
 <div class="d-flex flex-column flex-shrink-0 text-bg-dark w-100 h-100">
 	<ul class="nav nav-pills flex-column">

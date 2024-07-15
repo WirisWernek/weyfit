@@ -1,10 +1,11 @@
 import { Component, Input } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
 	selector: 'app-cardio',
 	standalone: true,
-	imports: [],
+	imports: [FormsModule, ReactiveFormsModule, NgbAccordionModule],
 	templateUrl: './cardio.component.html',
 	styleUrl: './cardio.component.scss',
 })

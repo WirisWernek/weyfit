@@ -9,37 +9,52 @@
 			<input type="date" class="form-control" id="exampleFormControlInput1" placeholder="nome" formControlName="dataAtividade" />
 		</div>
 
-		<div ngbAccordion>
+		<div ngbAccordion class="accordion">
 			<div ngbAccordionItem>
-			  <h2 ngbAccordionHeader>
-				<button ngbAccordionButton>Alongamentos</button>
-			  </h2>
-			  <div ngbAccordionCollapse>
-				<div ngbAccordionBody>
-					<app-alongamento [form]="form"></app-alongamento>
+				<h2 ngbAccordionHeader>
+					<button ngbAccordionButton>Alongamentos</button>
+				</h2>
+				<div ngbAccordionCollapse>
+					<div ngbAccordionBody>
+						<app-alongamento [form]="form"></app-alongamento>
+					</div>
 				</div>
-			  </div>
 			</div>
-		  </div>
-		  
-		<!-- <accordion class="mb-3 d-flex flex-column gap-1" [isAnimated]="true">
-			<accordion-group heading="Alongamentos" >
-				<app-alongamento [form]="form"></app-alongamento>
-			</accordion-group>
-			<accordion-group heading="Cardios">
-				<app-cardio [form]="form"></app-cardio>
-			</accordion-group>
-			<accordion-group heading="Séries">
-				<app-serie [form]="form"></app-serie>
-			</accordion-group>
-			<accordion-group heading="Drop Sets">
-				<app-drop-set [form]="form"></app-drop-set>
-			</accordion-group>
-		</accordion> -->
-		<div class="d-flex w-100 align-items-center justify-content-center mb-3 px-2 fixed-bottom">
-			<button (click)="save()" class="btn btn-success w-100 d-flex gap-2 justify-content-center">
+			<div ngbAccordionItem>
+				<h2 ngbAccordionHeader>
+					<button ngbAccordionButton>Cardios</button>
+				</h2>
+				<div ngbAccordionCollapse>
+					<div ngbAccordionBody>
+						<app-cardio [form]="form"></app-cardio>
+					</div>
+				</div>
+			</div>
+			<div ngbAccordionItem>
+				<h2 ngbAccordionHeader>
+					<button ngbAccordionButton>Séries</button>
+				</h2>
+				<div ngbAccordionCollapse>
+					<div ngbAccordionBody>
+						<app-serie [form]="form"></app-serie>
+					</div>
+				</div>
+			</div>
+			<div ngbAccordionItem>
+				<h2 ngbAccordionHeader>
+					<button ngbAccordionButton>Drop Sets</button>
+				</h2>
+				<div ngbAccordionCollapse>
+					<div ngbAccordionBody>
+						<app-drop-set [form]="form"></app-drop-set>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="d-flex w-100 align-items-center justify-content-center mb-3 px-3 fixed-bottom">
+			<button (click)="save()" class="btn btn-success btn-lg w-100 d-flex gap-2 justify-content-center">
 				<i class="bi bi-floppy"></i>
-				<span >Salvar</span>
+				<span>Salvar</span>
 			</button>
 		</div>
 	</form>
