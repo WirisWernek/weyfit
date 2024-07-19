@@ -65,7 +65,7 @@ export class AuthService {
 	}
 
 	resetPassword(email: string): Observable<void> {
-		const promise = sendPasswordResetEmail(this.firebaseAuth, email).then(() => {});
+		const promise = sendPasswordResetEmail(this.firebaseAuth, email);
 		return from(promise);
 	}
 

@@ -70,7 +70,7 @@ export class AtividadeFormComponent implements OnInit {
 			this.atividadeService.updateAtividade(this.docId, formRaw).subscribe({
 				complete: () => {
 					this.alertService.showLoading(false);
-					this.alertService.showSuccess('Atividade atualizada com sucesso, tá que tá heim?!');
+					this.alertService.showSuccess('Atividade atualizada com sucesso','Tá que tá heim?!');
 					this.router.navigateByUrl('/cliente/atividades');
 				},
 				error: (err) => {
@@ -82,7 +82,7 @@ export class AtividadeFormComponent implements OnInit {
 			this.atividadeService.insertAtividade(formRaw).subscribe({
 				complete: () => {
 					this.alertService.showLoading(false);
-					this.alertService.showSuccess('Nova atividade registrada com sucesso, mandou bem heim?!');
+					this.alertService.showSuccess('Nova atividade registrada com sucesso','mandou bem heim?!');
 					this.router.navigateByUrl('/cliente/atividades');
 				},
 				error: (err) => {

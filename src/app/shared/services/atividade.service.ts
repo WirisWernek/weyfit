@@ -23,7 +23,7 @@ import { AuthService } from './auth.service';
 })
 export class AtividadeService {
 	itemCollection: CollectionReference;
-	collectionName: string = 'atividade';
+	collectionName = 'atividade';
 	user!: User;
 
 	constructor(private firestore: Firestore, private authService: AuthService) {
