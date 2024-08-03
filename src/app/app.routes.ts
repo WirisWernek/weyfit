@@ -12,7 +12,7 @@ export const routes: Routes = [
 		loadComponent: () => import('./views/login/login.component').then((c) => c.LoginComponent),
 	},
 	{
-		path: '',
+		path: '**',
 		pathMatch: 'full',
 		redirectTo: 'auth',
 	},
