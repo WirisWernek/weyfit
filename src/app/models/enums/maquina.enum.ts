@@ -1,6 +1,7 @@
 export enum MaquinaEnum {
-	BICICLETA,
-	ELIPTICO,
-	ESTEIRA,
-	CROSS,
+	BICICLETA = "Bicicleta",
+	ELIPTICO = "Eliptico",
+	ESTEIRA = "Esteira",
+	CROSS = "Cross",
+	NAO_USADO = "Não Usado"
 }

@@ -1,7 +1,6 @@
 import { AsyncPipe, DatePipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
 import { AtividadeModel } from '../../models/atividade.model';
 import { AlertService } from '../../shared/services/alert.service';
 import { AtividadeService } from '../../shared/services/atividade.service';
@@ -14,12 +13,34 @@ import { AtividadeService } from '../../shared/services/atividade.service';
 	styleUrl: './atividades.component.scss',
 })
 export class AtividadesComponent implements OnInit {
-	atividades$!: Observable<AtividadeModel[]>;
+	atividades: AtividadeModel[] = [];
 
-	constructor(private router: Router, private atividadeService: AtividadeService, private alertService: AlertService) {}
+	private router = inject(Router);
+	private atividadeService = inject(AtividadeService);
+	private alertService = inject(AlertService);
 
 	ngOnInit(): void {
-		this.atividades$ = this.atividadeService.getAtividades();
+		this._load();
+	}
+
+	private _load() {
+		this.atividadeService.getAtividades().subscribe({
+			next: (value) => {
+				const sortedAtividades = value.sort(function (a: AtividadeModel, b: AtividadeModel) {
+					if (new Date(a.dataAtividade) > new Date(b.dataAtividade)) {
+						return -1;
+					}
+					if (new Date(a.dataAtividade) < new Date(b.dataAtividade)) {
+						return 1;
+					}
+					return 0;
+				});
+				this.atividades = sortedAtividades;
+			},
+			error: (err) => {
+				this.alertService.showError(err);
+			},
+		});
 	}
 
 	open(index: string | undefined) {
@@ -34,5 +55,15 @@ export class AtividadesComponent implements OnInit {
 
 	count(atividade: AtividadeModel): number {
 		return atividade.alongamentos.length + atividade.cardios.length + atividade.dropSets.length + atividade.series.length;
+	}
+
+	private _sort(a: AtividadeModel, b: AtividadeModel) {
+		if (a.dataAtividade < b.dataAtividade) {
+			return -1;
+		}
+		if (a.dataAtividade < b.dataAtividade) {
+			return 1;
+		}
+		return 0;
 	}
 }

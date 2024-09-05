@@ -1,6 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap';
+import { MaquinaService } from './../../../../shared/services/maquina.service';
 
 @Component({
 	selector: 'app-cardio',
@@ -9,10 +10,16 @@ import { NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap';
 	templateUrl: './cardio.component.html',
 	styleUrl: './cardio.component.scss',
 })
-export class CardioComponent {
+export class CardioComponent implements OnInit{
 	@Input() form!: FormGroup;
-
-	constructor(private formBuilder: FormBuilder) {}
+	maquinas: string[] = [];
+	
+	formBuilder = inject(FormBuilder);
+	maquinaService = inject(MaquinaService);
+	
+	ngOnInit(): void {
+		this.maquinas = this.maquinaService.getMaquinas();
+	}
 
 	get cardios() {
 		return (this.form.get('cardios') as FormArray).controls as FormGroup[];

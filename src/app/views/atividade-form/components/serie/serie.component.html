@@ -19,13 +19,12 @@
 							<input type="text" class="form-control" id="inputNome" placeholder="Rosca Direta" formControlName="nome" />
 						</div>
 						<div class="mb-3">
-							<label for="inputMaquina" class="form-label">Máquina</label>
+							<label for="inputMaquina" class="form-label">Exercício</label>
 							<select class="form-select" id="inputMaquina" formControlName="maquina" name="maquina" required="">
 								<option [ngValue]="''" selected disabled>Selecione uma opção</option>
-								<option value="BICICLETA">Bicicleta</option>
-								<option value="ELIPTICO">Elíptico</option>
-								<option value="ESTEIRA">Esteira</option>
-								<option value="CROSS">Cross</option>
+								@for (item of exercicios; track $index) {
+									<option [value]="item">{{item}}</option>
+								}
 							</select>
 						</div>
 

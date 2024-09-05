@@ -1,6 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap';
+import { ExercicioService } from './../../../../shared/services/exercicio.service';
 
 @Component({
 	selector: 'app-serie',
@@ -9,10 +10,17 @@ import { NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap';
 	templateUrl: './serie.component.html',
 	styleUrl: './serie.component.scss',
 })
-export class SerieComponent {
+export class SerieComponent implements OnInit {
 	@Input() form!: FormGroup;
 
-	constructor(private formBuilder: FormBuilder) {}
+	exercicios: string[] = [];
+
+	formBuilder = inject(FormBuilder);
+	exercicioService = inject(ExercicioService);
+
+	ngOnInit(): void {
+		this.exercicios = this.exercicioService.getExercicios();
+	}
 
 	get series() {
 		return (this.form.get('series') as FormArray).controls as FormGroup[];
@@ -43,8 +51,8 @@ export class SerieComponent {
 
 	async addRepeticao(indexSerie: number) {
 		const repeticaoForm = this.formBuilder.group({
-			qtdRepeticoes: [0, Validators.required],
-			peso: [0, Validators.required],
+			qtdRepeticoes: [ null, Validators.required],
+			peso: [ null, Validators.required],
 		});
 
 		(this.series[indexSerie].get('repeticoes') as FormArray).push(repeticaoForm);

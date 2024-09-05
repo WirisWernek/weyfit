@@ -26,10 +26,9 @@
 							<label for="inputMaquina" class="form-label">Máquina</label>
 							<select class="form-select" id="inputMaquina" formControlName="maquina" name="maquina" required="">
 								<option [ngValue]="''" selected disabled>Selecione uma opção</option>
-								<option value="BICICLETA">Bicicleta</option>
-								<option value="ELIPTICO">Elíptico</option>
-								<option value="ESTEIRA">Esteira</option>
-								<option value="CROSS">Cross</option>
+								@for (item of maquinas; track $index) {
+									<option [value]=item >{{item}}</option>
+								}
 							</select>
 						</div>
 						<div class="mb-3">
