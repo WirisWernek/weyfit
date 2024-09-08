@@ -1,4 +1,5 @@
 export const environment = {
+	baseUrl: 'http://localhost:8080',
 	production: true,
 	firebase: {
 		projectId: 'weyfit-dde6c',

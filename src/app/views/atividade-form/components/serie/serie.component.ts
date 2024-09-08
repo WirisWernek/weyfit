@@ -49,10 +49,21 @@ export class SerieComponent implements OnInit {
 		return (this.series[indexSerie].get('repeticoes') as FormArray).removeAt(indexRepeticao);
 	}
 
+	async duplicarRepeticao(indexSerie: number, indexRepeticao: number) {
+		const repeticao = (this.series[indexSerie].get('repeticoes') as FormArray).at(indexRepeticao);
+
+		const repeticaoForm = this.formBuilder.group({
+			qtdRepeticoes: [repeticao.get('qtdRepeticoes')?.value, Validators.required],
+			peso: [repeticao.get('peso')?.value, Validators.required],
+		});
+
+		(this.series[indexSerie].get('repeticoes') as FormArray).push(repeticaoForm);
+	}
+
 	async addRepeticao(indexSerie: number) {
 		const repeticaoForm = this.formBuilder.group({
-			qtdRepeticoes: [ null, Validators.required],
-			peso: [ null, Validators.required],
+			qtdRepeticoes: [null, Validators.required],
+			peso: [null, Validators.required],
 		});
 
 		(this.series[indexSerie].get('repeticoes') as FormArray).push(repeticaoForm);

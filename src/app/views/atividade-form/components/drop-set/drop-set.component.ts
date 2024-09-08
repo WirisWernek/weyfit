@@ -40,12 +40,23 @@ export class DropSetComponent {
 		return (this.dropSets[indexDropSet].get('sets') as FormArray).removeAt(indexSet);
 	}
 
+	async duplicarSet(indexDropSet: number, indexSet: number) {
+		const set = (this.dropSets[indexDropSet].get('sets') as FormArray).at(indexSet);
+
+		const setForm = this.formBuilder.group({
+			qtdRepeticoes: [set.get('qtdRepeticoes')?.value, Validators.required],
+			peso: [set.get('peso')?.value, Validators.required],
+		});
+
+		(this.dropSets[indexDropSet].get('sets') as FormArray).push(setForm);
+	}
+
 	addSet(indexDropSet: number) {
-		const serieForm = this.formBuilder.group({
+		const setForm = this.formBuilder.group({
 			qtdRepeticoes: [0, Validators.required],
 			peso: [0, Validators.required],
 		});
 
-		(this.dropSets[indexDropSet].get('sets') as FormArray).push(serieForm);
+		(this.dropSets[indexDropSet].get('sets') as FormArray).push(setForm);
 	}
 }

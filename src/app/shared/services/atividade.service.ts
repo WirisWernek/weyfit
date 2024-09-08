@@ -24,6 +24,7 @@ import { AuthService } from './auth.service';
 export class AtividadeService {
 	itemCollection: CollectionReference;
 	collectionName = 'atividade';
+	atividades$!: Observable<AtividadeModel[]>;
 	user!: User;
 
 	constructor(private firestore: Firestore, private authService: AuthService) {
@@ -44,7 +45,8 @@ export class AtividadeService {
 	}
 
 	getAtividades(): Observable<AtividadeModel[]> {
-		return collectionData(this.itemCollection, { idField: 'id' }) as Observable<AtividadeModel[]>;
+		this.atividades$ = collectionData(this.itemCollection, { idField: 'id' }) as Observable<AtividadeModel[]>;
+		return this.atividades$;
 	}
 
 	getByIdAtividade(id: string) {
