@@ -5,28 +5,32 @@ import { AlertService } from '../../../../shared/services/alert.service';
 import { EstatisticasService } from '../../../../shared/services/estatisticas.service';
 
 @Component({
-  selector: 'app-grafico-atividades',
-  standalone: true,
-  imports: [],
-  templateUrl: './grafico-atividades.component.html',
-  styleUrl: './grafico-atividades.component.scss'
+	selector: 'app-grafico-atividades',
+	standalone: true,
+	imports: [],
+	templateUrl: './grafico-atividades.component.html',
+	styleUrl: './grafico-atividades.component.scss',
 })
 export class GraficoAtividadesComponent implements OnInit {
 	grafico: any = [];
 	atividades: TotalAtividadesModel[] = [];
-	
+
 	private alertService = inject(AlertService);
 	private estatisticasService = inject(EstatisticasService);
 
 	ngOnInit(): void {
-		this.estatisticasService.getTotalAtividades().subscribe({
-			next: (value) => {
-				this.atividades = value;
-				this._load();
-			},
-			error: (err) => {
+		this.estatisticasService
+			.getEstatisticas()
+			.then((value) => {
+				value.forEach((doc) => {
+					const data = doc.data();
+					this.atividades = data['estatisticasGruposAtividades'] as TotalAtividadesModel[];
+					this._load();
+				});
+			})
+			.catch((err) => {
 				this.alertService.showError(err);
-		}});
+			});
 	}
 
 	private _load() {
@@ -51,6 +55,4 @@ export class GraficoAtividadesComponent implements OnInit {
 			},
 		});
 	}
-
-
 }

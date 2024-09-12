@@ -5,11 +5,11 @@ import { AlertService } from '../../../../shared/services/alert.service';
 import { EstatisticasService } from '../../../../shared/services/estatisticas.service';
 
 @Component({
-  selector: 'app-grafico-cardio',
-  standalone: true,
-  imports: [],
-  templateUrl: './grafico-cardio.component.html',
-  styleUrl: './grafico-cardio.component.scss'
+	selector: 'app-grafico-cardio',
+	standalone: true,
+	imports: [],
+	templateUrl: './grafico-cardio.component.html',
+	styleUrl: './grafico-cardio.component.scss',
 })
 export class GraficoCardioComponent implements OnInit {
 	grafico: any = [];
@@ -19,14 +19,18 @@ export class GraficoCardioComponent implements OnInit {
 	private estatisticasService = inject(EstatisticasService);
 
 	ngOnInit(): void {
-		this.estatisticasService.getTotalCardios().subscribe({
-			next: (value) => {
-				this.cardios = value;
-				this._load();
-			},
-			error: (err) => {
+		this.estatisticasService
+			.getEstatisticas()
+			.then((value) => {
+				value.forEach((doc) => {
+					const data = doc.data();
+					this.cardios = data['estatisticasCardios'] as TotalCardiosModel[];
+					this._load();
+				});
+			})
+			.catch((err) => {
 				this.alertService.showError(err);
-		}});
+			});
 	}
 
 	private _load() {

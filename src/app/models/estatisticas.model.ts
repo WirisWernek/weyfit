@@ -1,5 +1,4 @@
 export interface EstatisticasModel {
-	treinos: number;
 	series: number;
 	cardios: number;
 	dropsSets: number;

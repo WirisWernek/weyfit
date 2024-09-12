@@ -1,6 +1,7 @@
-<p>Treinos: {{ numeroTreinos }}</p>
+<p>Ultima Atualização: {{ estatisticasGerais.dataAtualizacao | date : 'dd/mm/yyyy' }}</p>
 
 <button class="btn btn-success" (click)="popularBase()">Popular Base</button>
+<button class="btn btn-success" (click)="atualizarEstatisticas()">Atualizar estatísticas</button>
 
 <app-grafico-grupos-atividades class="w-100"></app-grafico-grupos-atividades>
 <app-grafico-cardio class="w-100"></app-grafico-cardio>
