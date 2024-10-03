@@ -31,9 +31,9 @@ export class CardioComponent implements OnInit{
 
 	addCardio() {
 		const cardioForm = this.formBuilder.group({
-			tempo: [0, Validators.required],
+			tempo: [null, Validators.required],
 			nome: ['', Validators.required],
-			distancia: [0, Validators.required],
+			distancia: [null, Validators.required],
 			maquina: ['', Validators.required],
 			estado: ['', Validators.required],
 		});

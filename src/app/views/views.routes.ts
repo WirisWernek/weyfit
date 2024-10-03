@@ -32,6 +32,11 @@ export const VIEWS_ROUTES: Routes = [
 		loadComponent: () => import('./usuario/usuario.component').then((c) => c.UsuarioComponent),
 	},
 	{
+		path: 'conquistas',
+		title: 'Conquistas',
+		loadComponent: () => import('./conquistas/conquistas.component').then((c) => c.ConquistasComponent),
+	},
+	{
 		path: '**',
 		pathMatch: 'full',
 		redirectTo: 'atividades',

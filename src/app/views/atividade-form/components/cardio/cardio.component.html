@@ -9,15 +9,15 @@
 	<div ngbAccordion>
 		<div ngbAccordionItem>
 			<h2 ngbAccordionHeader>
-				<button ngbAccordionButton>{{ cardioForm.get('nome')?.value !== '' ? cardioForm.get('nome')?.value : 'Cardio ' + (i + 1) }}</button>
+				<button ngbAccordionButton>{{ cardioForm.get('maquina')?.value !== '' ? cardioForm.get('maquina')?.value : 'Cardio ' + (i + 1) }}</button>
 			</h2>
 			<div ngbAccordionCollapse>
 				<div ngbAccordionBody>
 					<form class="lesson-form-row customized" [formGroup]="cardioForm">
-						<div class="mb-3">
+						<!-- <div class="mb-3">
 							<label for="inputNome" class="form-label">Nome</label>
 							<input type="text" class="form-control" id="inputNome" placeholder="Bicicleta Indoor" formControlName="nome" />
-						</div>
+						</div> -->
 						<div class="mb-3">
 							<label for="inputDistancia" class="form-label">Distância (Quilômetros)</label>
 							<input type="number" class="form-control" id="inputDistancia" placeholder="2.4" formControlName="distancia" />

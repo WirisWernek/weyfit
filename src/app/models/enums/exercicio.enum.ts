@@ -50,7 +50,7 @@ export enum ExercicioEnum {
 	INFRA = "Infra",
 	REMADOR = "Remador",
 	PRENSADA = "Prensada",
-	LEG_PRESS_45_REST_PAUSE = "Leg Press",
+	LEG_PRESS_45_REST_PAUSE = "Leg Press Com Rest Pause",
 	ENCOLHIMENTO_HALTER = "Encolhimento com Halter",
 
 }

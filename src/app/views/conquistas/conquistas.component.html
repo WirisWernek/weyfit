@@ -1,0 +1,42 @@
+<h2>Cardio</h2>
+
+@for (item of conquistasCardios$ | async; track $index) {
+<div class="d-flex justify-content-between align-items-center">
+	<p>{{ item.cardio }}</p>
+	<p>{{ item.maximo }}</p>
+	<p>{{ item.media }}</p>
+	<p>{{ item.minimo }}</p>
+</div>
+}
+
+<h2>Series</h2>
+
+<div ngbAccordion [closeOthers]="true">
+	@for (item of conquistasSeries$ | async; track item; let i = $index) {
+	<div ngbAccordionItem>
+		<h2 ngbAccordionHeader>
+			<button ngbAccordionButton>{{ convert(item.exercicio) }}</button>
+		</h2>
+		<div ngbAccordionCollapse>
+			<div ngbAccordionBody>
+				<table class="table w-100 table-striped text-center">
+					<thead class="w-100 justify-content-between align-items-center">
+						<tr>
+							<th scope="col">Máximo</th>
+							<th scope="col">Médio</th>
+							<th scope="col">Mínimo</th>
+						</tr>
+					</thead>
+					<tbody  class="w-100 justify-content-between align-items-center">
+						<tr>
+							<td>{{ item.maximo }}</td>
+							<td>{{ item.media }}</td>
+							<td>{{ item.minimo }}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	}
+</div>

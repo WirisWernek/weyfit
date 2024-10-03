@@ -16,5 +16,6 @@ export class SidebarComponent {
 		{ nome: 'Estatísticas', icon: 'bi-graph-up-arrow', url: 'cliente/estatisticas' },
 		{ nome: 'Importar Dados', icon: 'bi-database-up', url: 'cliente/importar' },
 		{ nome: 'Usuário', icon: 'bi-person', url: 'cliente/usuario' },
+		{ nome: 'Conquistas', icon: 'bi-trophy', url: 'cliente/conquistas' },
 	];
 }

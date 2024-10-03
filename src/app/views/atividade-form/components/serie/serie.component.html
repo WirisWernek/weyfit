@@ -9,15 +9,15 @@
 	<div ngbAccordion>
 		<div ngbAccordionItem>
 			<h2 ngbAccordionHeader>
-				<button ngbAccordionButton>{{ serieForm.get('nome')?.value !== '' ? serieForm.get('nome')?.value : 'Série ' + (i + 1) }}</button>
+				<button ngbAccordionButton>{{ serieForm.get('maquina')?.value !== '' ? serieForm.get('maquina')?.value : 'Série ' + (i + 1) }}</button>
 			</h2>
 			<div ngbAccordionCollapse>
 				<div ngbAccordionBody>
 					<form class="lesson-form-row cutomized" [formGroup]="serieForm">
-						<div class="mb-3">
+						<!-- <div class="mb-3">
 							<label for="inputNome" class="form-label">Nome</label>
 							<input type="text" class="form-control" id="inputNome" placeholder="Rosca Direta" formControlName="nome" />
-						</div>
+						</div> -->
 						<div class="mb-3">
 							<label for="inputMaquina" class="form-label">Exercício</label>
 							<select class="form-select" id="inputMaquina" formControlName="maquina" name="maquina" required="">
