@@ -2,22 +2,21 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { User } from '@angular/fire/auth';
 import { addDoc, collection, CollectionReference, deleteDoc, Firestore, getDocs, limit, orderBy, query } from '@angular/fire/firestore';
-
 import { Observable, take } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { AtividadeModel } from '../../models/atividade.model';
-import { EstatisticasGeraisModel } from '../../models/estatisticas-gerais.model';
-import { TotalAtividadesPorGrupoModel } from '../../models/total-atividades-grupo.model';
-import { TotalAtividadesModel } from '../../models/total-atividades.model';
-import { TotalCardiosModel } from '../../models/total-cardios.model';
+import { ProgressoModel } from '../../models/progresso.model';
+import { TotalProgressoCardiosModel } from '../../models/total-progresso-cardios.model';
+import { TotalProgressoSeriesModel } from '../../models/total-progresso-series.model';
 import { AuthService } from './auth.service';
 
 @Injectable({
-	providedIn: 'root',
+  providedIn: 'root'
 })
-export class EstatisticasService {
+export class ProgressoService {
+
 	itemCollection: CollectionReference;
-	collectionName = 'estatisticas';
+	collectionName = 'progressos';
 	atividades$!: Observable<AtividadeModel[]>;
 	user!: User;
 	http = inject(HttpClient);
@@ -47,54 +46,28 @@ export class EstatisticasService {
 			});
 	}
 
-	popularBase(atividades: AtividadeModel[]) {
-		return this.http.post<void>(`${this.baseUrl}`, atividades, {
-			headers: this.headers,
-		});
-	}
-
-	getTotalCardios() {
-		return this.http.get<TotalCardiosModel[]>(`${this.baseUrl}/total-cardios`, {
-			headers: this.headers,
-		});
-	}
-
-	getTotalAtividadePorGrupo() {
-		return this.http.get<TotalAtividadesPorGrupoModel>(`${this.baseUrl}/total-grupos`, {
-			headers: this.headers,
-		});
-	}
-
-	getTotalAtividades() {
-		return this.http.get<TotalAtividadesModel[]>(`${this.baseUrl}/total-atividades`, {
-			headers: this.headers,
-		});
-	}
-
-	getEstatisticas() {
+	getProgressos() {
 		const q = query(this.itemCollection, orderBy('dataAtualizacao', 'desc'), limit(1));
 		return getDocs(q);
 	}
 
-	async atualizarEstatisticas(
-		estatisticasGruposAtividades: TotalAtividadesModel[],
-		estatisticasCardios: TotalCardiosModel[],
-		estatisticasAtividadesPorGrupo: TotalAtividadesPorGrupoModel
+	async atualizarProgressos(
+		series: TotalProgressoSeriesModel[],
+		cardios: TotalProgressoCardiosModel[],
 	) {
 		const idUsuario = this._getUserID();
 		const dados = {
 			id: idUsuario,
 			dataAtualizacao: new Date(),
-			estatisticasGruposAtividades: estatisticasGruposAtividades,
-			estatisticasCardios: estatisticasCardios,
-			estatisticasAtividadesPorGrupo: estatisticasAtividadesPorGrupo,
-		} as EstatisticasGeraisModel;
+			series: series,
+			cardios: cardios,
+		} as ProgressoModel;
 
 		await this.clear().catch((err) => {
 			console.error(err);
 		});
 		addDoc(this.itemCollection, dados).then(() => {
-			console.log('Estatísticas atualizadas com sucesso');
+			console.log('Progresso atualizado com sucesso');
 		});
 	}
 
@@ -104,6 +77,14 @@ export class EstatisticasService {
 		querySnapshot.forEach((doc) => {
 			deleteDoc(doc.ref);
 		});
+	}
+
+	getProgressoSeries() {
+		return this.http.get<TotalProgressoSeriesModel[]>(this.baseUrl + '/conquistas-series', { headers: this.headers });
+	}
+	
+	getProgressoCardios() {
+		return this.http.get<TotalProgressoCardiosModel[]>(this.baseUrl + '/conquistas-cardios', { headers: this.headers });
 	}
 
 	private _getUserID() {

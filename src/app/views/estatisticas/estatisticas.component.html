@@ -1,8 +1,14 @@
-<p>Ultima Atualização: {{ estatisticasGerais.dataAtualizacao | date : 'dd/MM/yyyy' }}</p>
+<main class="d-flex justify-content-center flex-column pb-3 text-center px-1 gap-2">
+	<p>Ultima Atualização: {{ estatisticasGerais.dataAtualizacao | date : 'dd/MM/yyyy' }}</p>
 
-<button class="btn btn-success" (click)="popularBase()">Popular Base</button>
-<button class="btn btn-success" (click)="atualizarEstatisticas()">Atualizar estatísticas</button>
+	<div class="w-100 d-flex  gap-1">
+		<button class="btn btn-success w-100" (click)="popularBase()">Popular Base</button>
+		<button class="btn btn-success w-100" (click)="atualizarEstatisticas()">Atualizar estatísticas</button>
+	</div>
 
-<app-grafico-grupos-atividades class="w-100"></app-grafico-grupos-atividades>
-<app-grafico-cardio class="w-100"></app-grafico-cardio>
-<app-grafico-atividades class="w-100"></app-grafico-atividades>
+	<div class="d-flex w-100 justify-content-center flex-column gap-5">
+		<app-grafico-grupos-atividades class="w-100"></app-grafico-grupos-atividades>
+		<app-grafico-cardio class="w-100"></app-grafico-cardio>
+	</div>
+	<app-grafico-atividades class="w-100"></app-grafico-atividades>
+</main>

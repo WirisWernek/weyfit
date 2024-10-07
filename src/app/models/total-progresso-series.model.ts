@@ -1,6 +1,6 @@
 import { ExercicioEnum } from "./enums/exercicio.enum";
 
-export interface TotalConquistasSeriesModel {
+export interface TotalProgressoSeriesModel {
 	exercicio: ExercicioEnum;
 	maximo: number;
 	minimo: number;

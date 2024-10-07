@@ -1,4 +1,4 @@
-export interface TotalConquistasCardiosModel {
+export interface TotalProgressoCardiosModel {
 	cardio: string;
 	maximo: number;
 	minimo: number;

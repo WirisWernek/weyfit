@@ -35,8 +35,8 @@ export class EstatisticasComponent implements OnInit {
 
 	ngOnInit(): void {
 		this._load();
-		this._getEstatisticas();
-		this.getUltimaEstaistica();
+		this._getCalculoEstatisticas();
+		this.getEstatisticas();
 	}
 
 	private _load() {
@@ -71,7 +71,7 @@ export class EstatisticasComponent implements OnInit {
 		);
 	}
 
-	getUltimaEstaistica() {
+	getEstatisticas() {
 		this.estatisticasService.getEstatisticas().then((value) => {
 			value.forEach((doc) => {
 				const data = doc.data();
@@ -81,7 +81,7 @@ export class EstatisticasComponent implements OnInit {
 		});
 	}
 
-	private _getEstatisticas() {
+	private _getCalculoEstatisticas() {
 		this.estatisticasService.getTotalCardios().subscribe({
 			next: (value) => {
 				this.estatisticasCardios = value;

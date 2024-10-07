@@ -32,9 +32,9 @@ export const VIEWS_ROUTES: Routes = [
 		loadComponent: () => import('./usuario/usuario.component').then((c) => c.UsuarioComponent),
 	},
 	{
-		path: 'conquistas',
-		title: 'Conquistas',
-		loadComponent: () => import('./conquistas/conquistas.component').then((c) => c.ConquistasComponent),
+		path: 'progressos',
+		title: 'Progresso',
+		loadComponent: () => import('./progresso/progresso.component').then((c) => c.ProgressoComponent),
 	},
 	{
 		path: '**',

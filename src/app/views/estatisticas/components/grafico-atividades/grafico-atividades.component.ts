@@ -37,7 +37,7 @@ export class GraficoAtividadesComponent implements OnInit {
 		this.grafico = new Chart('grafico-total-atividades', {
 			type: 'bar',
 			data: {
-				labels: this.atividades.map((c) => new Date(c.data).toLocaleDateString()),
+				labels: this.atividades.map((c) => this.formatarData(new Date(c.data))),
 				datasets: [
 					{
 						label: 'Numero de Atividades',
@@ -54,5 +54,14 @@ export class GraficoAtividadesComponent implements OnInit {
 				},
 			},
 		});
+	}
+
+	formatarData(data: Date): string{
+			const dia  = data.getDate().toString()
+			const diaF = (dia.length == 1) ? '0'+dia : dia
+			const mes  = (data.getMonth()+1).toString() //+1 pois no getMonth Janeiro começa com zero.
+			const mesF = (mes.length == 1) ? '0'+mes : mes
+			const anoF = data.getFullYear();
+		return diaF+"/"+mesF+"/"+anoF;
 	}
 }
